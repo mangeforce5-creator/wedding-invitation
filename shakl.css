@@ -1,0 +1,663 @@
+/* CSS Reset & Variables */
+:root {
+    --bg-cream: #FDFBF7; /* A refined cream/off-white */
+    --text-dark: #1A1A1A;
+    --accent-gold: #D4AF37;
+    --accent-gold-dark: #B89600;
+    --heart-pink: #FFB6C1;
+    --font-heading: 'Cormorant Garamond', serif;
+    --font-body: 'Montserrat', sans-serif;
+    --font-script: 'Great Vibes', cursive;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-cream);
+    color: var(--text-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Typography */
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    font-weight: 400;
+}
+
+.gold {
+    color: var(--accent-gold);
+}
+
+/* =========================================
+   Intro Overlay (Wax Seal)
+   ========================================= */
+.intro-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--bg-cream);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 1.5s ease-in-out, visibility 1.5s;
+}
+
+.intro-content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+.intro-text {
+    font-size: 0.9rem;
+    letter-spacing: 0.3em;
+    color: var(--text-dark);
+    opacity: 0.8;
+}
+
+.wax-seal-container {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.wax-seal-container:hover {
+    transform: scale(1.05);
+}
+
+.wax-seal {
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, #2C3E2D 0%, #1A251B 100%);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 
+        inset 0 0 10px rgba(0,0,0,0.5),
+        0 4px 15px rgba(0,0,0,0.2),
+        0 0 0 4px var(--bg-cream),
+        0 0 0 6px #2C3E2D;
+    position: relative;
+}
+
+.seal-inner {
+    color: var(--accent-gold);
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1;
+}
+
+.ampersand {
+    font-family: var(--font-script);
+    font-size: 1.5rem;
+    margin: 5px 0;
+}
+
+.tap-text {
+    font-family: var(--font-heading);
+    font-style: italic;
+    color: var(--accent-gold);
+    font-size: 1.1rem;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+/* =========================================
+   Sticky Header
+   ========================================= */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(253, 251, 247, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.nav-logo {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--accent-gold);
+}
+
+.rsvp-btn-nav {
+    text-decoration: none;
+    color: var(--accent-gold);
+    border: 1px solid var(--accent-gold);
+    padding: 8px 20px;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    transition: all 0.3s;
+}
+
+.rsvp-btn-nav:hover {
+    background: var(--accent-gold);
+    color: var(--bg-cream);
+}
+
+/* =========================================
+   Hero Section
+   ========================================= */
+.hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 80px;
+    position: relative;
+    background-image: linear-gradient(rgba(253, 251, 247, 0.7), rgba(253, 251, 247, 0.9)), url('hero_bg.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.hero-content {
+    max-width: 800px;
+    z-index: 2;
+}
+
+.the-wedding-of {
+    font-size: 1.8rem;
+    color: var(--accent-gold);
+    margin-bottom: 10px;
+    font-style: italic;
+}
+
+.couple-names {
+    font-family: var(--font-script);
+    font-size: 6rem;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    color: var(--text-dark);
+}
+
+.wedding-date {
+    font-size: 1rem;
+    letter-spacing: 0.2em;
+    margin-bottom: 40px;
+}
+
+/* Countdown */
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.time-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.time-box span {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: var(--accent-gold);
+    line-height: 1;
+}
+
+.time-box p {
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 5px;
+}
+
+/* Scroll Down */
+.scroll-down {
+    text-decoration: none;
+    color: var(--text-dark);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    opacity: 0.6;
+    transition: opacity 0.3s;
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.scroll-down:hover {
+    opacity: 1;
+}
+
+.arrow-down {
+    width: 1px;
+    height: 20px;
+    background-color: var(--text-dark);
+    margin-top: 10px;
+    position: relative;
+}
+
+.arrow-down::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -4px;
+    width: 9px;
+    height: 9px;
+    border-bottom: 1px solid var(--text-dark);
+    border-right: 1px solid var(--text-dark);
+    transform: rotate(45deg);
+}
+
+/* =========================================
+   Sections General
+   ========================================= */
+.section-padding {
+    padding: 100px 20px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 3rem;
+    color: var(--accent-gold);
+    margin-bottom: 60px;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 2px;
+    background-color: var(--accent-gold);
+}
+
+/* =========================================
+   Our Story (Timeline)
+   ========================================= */
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 1px;
+    background-color: var(--accent-gold);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -0.5px;
+}
+
+.timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+}
+
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    right: -7px;
+    background-color: var(--bg-cream);
+    border: 2px solid var(--accent-gold);
+    top: 15px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.left {
+    left: 0;
+    text-align: right;
+}
+
+.right {
+    left: 50%;
+    text-align: left;
+}
+
+.right::after {
+    left: -8px;
+}
+
+.timeline-content {
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+
+.timeline-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.timeline-content .date {
+    color: var(--accent-gold);
+    font-style: italic;
+    font-family: var(--font-heading);
+    margin-bottom: 10px;
+}
+
+/* =========================================
+   Details Cards
+   ========================================= */
+.cards-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.detail-card {
+    background: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    flex: 1;
+    min-width: 300px;
+    max-width: 400px;
+}
+
+.detail-card .icon {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.detail-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: var(--text-dark);
+}
+
+.detail-card p {
+    margin-bottom: 10px;
+}
+
+.btn-outline {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 25px;
+    border: 1px solid var(--accent-gold);
+    color: var(--accent-gold);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    font-size: 0.85rem;
+    transition: all 0.3s;
+}
+
+.btn-outline:hover {
+    background: var(--accent-gold);
+    color: white;
+}
+
+/* =========================================
+   Gallery
+   ========================================= */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.gallery-item {
+    height: 300px;
+    background-color: #E8E5DF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #999;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+/* =========================================
+   RSVP Form
+   ========================================= */
+.rsvp-subtitle {
+    margin-bottom: 40px;
+    font-style: italic;
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+}
+
+.rsvp-form {
+    max-width: 500px;
+    margin: 0 auto;
+    background: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+input, select {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #E8E5DF;
+    border-radius: 4px;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.3s;
+    background: var(--bg-cream);
+}
+
+input:focus, select:focus {
+    border-color: var(--accent-gold);
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 15px;
+    background: var(--accent-gold);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-family: var(--font-body);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-primary:hover {
+    background: var(--accent-gold-dark);
+}
+
+/* =========================================
+   Footer
+   ========================================= */
+.footer {
+    text-align: center;
+    padding: 30px;
+    background: white;
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: 1.1rem;
+    border-top: 1px solid #E8E5DF;
+}
+
+/* =========================================
+   Music FAB
+   ========================================= */
+.music-fab {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: white;
+    border: 1px solid var(--accent-gold);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    z-index: 1000;
+    color: var(--accent-gold);
+    transition: transform 0.3s;
+}
+
+.music-fab:hover {
+    transform: scale(1.1);
+}
+
+.music-fab svg {
+    width: 24px;
+    height: 24px;
+}
+
+.playing {
+    animation: spin 4s linear infinite;
+}
+
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
+/* =========================================
+   Floating Hearts
+   ========================================= */
+#hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.heart {
+    position: absolute;
+    bottom: -20px;
+    width: 15px;
+    height: 15px;
+    background-color: var(--heart-pink);
+    transform: rotate(-45deg);
+    animation: floatUp 10s infinite linear;
+    opacity: 0.6;
+}
+
+.heart::before, .heart::after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: var(--heart-pink);
+    border-radius: 50%;
+}
+
+.heart::before { top: -7.5px; left: 0; }
+.heart::after { top: 0; left: 7.5px; }
+
+@keyframes floatUp {
+    0% { transform: translateY(0) rotate(-45deg) scale(0.8); opacity: 0; }
+    10% { opacity: 0.6; }
+    90% { opacity: 0.6; }
+    100% { transform: translateY(-100vh) rotate(-45deg) scale(1.2); opacity: 0; }
+}
+
+/* =========================================
+   Animations (Scroll Reveal)
+   ========================================= */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.fade-in-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .navbar { padding: 15px 20px; }
+    .nav-links { display: none; } /* Could add a hamburger menu */
+    .couple-names { font-size: 4rem; }
+    .countdown { gap: 15px; }
+    .time-box span { font-size: 1.8rem; }
+    .timeline::after { left: 31px; }
+    .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
+    .left, .right { left: 0; text-align: left; }
+    .left::after, .right::after { left: 23px; }
+}
